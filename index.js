@@ -1,5 +1,4 @@
 const { Server } = require("socket.io");
-const dayjs = require("dayjs");
 
 const io = new Server({
   cors: {
@@ -151,7 +150,7 @@ io.on("connection", (socket) => {
   socket.on('disconnect', () => {
     players = players.filter(({ id }) => id !== socket.id);
     broadcastUpdate();
-  })
+  });
 });
 
 io.listen(Number(process.env.PORT) || 4000);
